@@ -42,7 +42,7 @@ public class TopicoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TopicoDto> actualizar( @PathVariable long id, @RequestBody @Valid TopicoDto topicoDto, BindingResult br){
+    public ResponseEntity<TopicoDto> updateTopic(@PathVariable long id, @RequestBody @Valid TopicoDto topicoDto, BindingResult br){
         if(br.hasErrors()){
             throw new ErrorFieldException("Invalid data", br);
         }

@@ -23,7 +23,7 @@ public class CursoController {
     }
 
     @PostMapping
-    public ResponseEntity<CursoDto> createTopic(@RequestBody @Valid CursoDto cursoDto, BindingResult br){
+    public ResponseEntity<CursoDto> createCourse(@RequestBody @Valid CursoDto cursoDto, BindingResult br){
         if(br.hasErrors()){
             throw new ErrorFieldException("Invalid data", br);
         }
@@ -31,17 +31,17 @@ public class CursoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CursoDto>> getTopics(){
+    public ResponseEntity<List<CursoDto>> getCourses(){
         return ResponseEntity.ok().body(cursoService.obtenerCursos());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CursoDto> getTopic( @PathVariable long id){
+    public ResponseEntity<CursoDto> getCourse( @PathVariable long id){
         return ResponseEntity.ok().body(cursoService.obtenerCursoPorId(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CursoDto> actualizar( @PathVariable long id, @RequestBody @Valid CursoDto cursoDto, BindingResult br){
+    public ResponseEntity<CursoDto> updateCourse( @PathVariable long id, @RequestBody @Valid CursoDto cursoDto, BindingResult br){
         if(br.hasErrors()){
             throw new ErrorFieldException("Invalid data", br);
         }
@@ -49,7 +49,7 @@ public class CursoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTopic( @PathVariable long id){
+    public ResponseEntity<String> deleteCourse( @PathVariable long id){
         return ResponseEntity.ok().body(cursoService.eliminarCurso(id));
     }
 }

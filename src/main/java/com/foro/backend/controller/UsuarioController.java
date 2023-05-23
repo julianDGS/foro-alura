@@ -31,17 +31,17 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UsuarioDto>> getTopics(){
+    public ResponseEntity<List<UsuarioDto>> getUsers(){
         return ResponseEntity.ok().body(usuarioService.obtenerUsuarios());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioDto> getTopic( @PathVariable long id){
+    public ResponseEntity<UsuarioDto> getUser( @PathVariable long id){
         return ResponseEntity.ok().body(usuarioService.obtenerUsuarioPorId(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioDto> actualizar( @PathVariable long id, @RequestBody @Valid UsuarioDto usuarioDto, BindingResult br){
+    public ResponseEntity<UsuarioDto> updateUser( @PathVariable long id, @RequestBody @Valid UsuarioDto usuarioDto, BindingResult br){
         if(br.hasErrors()){
             throw new ErrorFieldException("Invalid data", br);
         }
@@ -49,7 +49,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTopic( @PathVariable long id){
+    public ResponseEntity<String> deleteUser( @PathVariable long id){
         return ResponseEntity.ok().body(usuarioService.eliminarUsuario(id));
     }
 }
